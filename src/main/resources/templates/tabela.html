@@ -5,6 +5,7 @@
     <title>Tabela produktów</title>
 </head>
 <body>
+<form method="post" th:action="@{index/tabela.html}" th:object="${product}">
 <table>
     <tr>
         <th>Nazwa i cena produktów</th>
@@ -16,5 +17,6 @@
     </tr>
     </tbody>
 </table>
+</form>
 </body>
 </html>

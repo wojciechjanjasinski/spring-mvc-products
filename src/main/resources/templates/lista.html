@@ -5,10 +5,12 @@
     <title>Lista produktów</title>
 </head>
 <body>
+<form method="post" th:action="@{index/lista.html}" th:object="${product}">
 <ul>
     <li th:each="product: ${product}"
         th:text="|${product.name} ${product.price}|">Nazwa produktu i jego cena.
     </li>
 </ul>
+</form>
 </body>
 </html>
