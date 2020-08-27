@@ -25,4 +25,8 @@ public class ProductRepository {
                 .mapToDouble(Product::getPrice)
                 .sum();
     }
+
+    public void add(Product product) {
+        listOfProducts.add(product);
+    }
 }

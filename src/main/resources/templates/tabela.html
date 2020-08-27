@@ -5,18 +5,19 @@
     <title>Tabela produktów</title>
 </head>
 <body>
-<form method="post" th:action="@{index/tabela.html}" th:object="${product}">
+<form method="post" th:action="@{index/tabela.html}" th:object="${tabela}">
 <table>
     <tr>
         <th>Nazwa i cena produktów</th>
     </tr>
     <tbody>
-    <tr th:each="product: ${product}">
+    <tr th:each="product: ${tabela}">
         <td th:text="|${product.name}|">Nazwa produktu.
         <td th:text="|${product.price}|">Cena produktu.
     </tr>
     </tbody>
 </table>
+    <h2 th:text="|Suma cen: ${sumaCen}|"></h2>
 </form>
 </body>
 </html>

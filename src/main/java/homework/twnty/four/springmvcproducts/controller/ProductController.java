@@ -7,10 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ProductController {
@@ -25,26 +21,27 @@ public class ProductController {
     @GetMapping("/index")
     String getFromUser (Model model){
         Product product = new Product();
-        product.setName("");
-        product.setPrice(0);
         model.addAttribute("product", product);
         return "index";
     }
     @PostMapping("/index")
     String add (Product product){
-        System.out.println(product);
+        productRepository.add(product);
+        //System.out.println(product);
         return "redirect:/index/lista";
     }
 
     @GetMapping("/index/lista")
     String getProductsList (Model model){
         model.addAttribute("lista", productRepository.findAll());
+        model.addAttribute("sumaCen", productRepository.sumProductsPrices());
         return "lista";
     }
 
     @GetMapping("/index/tabela")
     String getProductsTable (Model model){
-        model.addAttribute("lista", productRepository.findAll());
+        model.addAttribute("tabela", productRepository.findAll());
+        model.addAttribute("sumaCen", productRepository.sumProductsPrices());
         return "tabela";
     }
 }
