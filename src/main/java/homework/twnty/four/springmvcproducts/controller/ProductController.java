@@ -18,13 +18,13 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/index")
+    @GetMapping
     String getFromUser (Model model){
         Product product = new Product();
         model.addAttribute("product", product);
         return "index";
     }
-    @PostMapping("/index")
+    @PostMapping("/")
     String add (Product product){
         productRepository.add(product);
         //System.out.println(product);
