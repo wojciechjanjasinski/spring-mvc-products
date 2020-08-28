@@ -19,27 +19,27 @@ public class ProductController {
     }
 
     @GetMapping
-    String getFromUser (Model model){
+    String getFromUser(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "index";
     }
-    @PostMapping("/")
-    String add (Product product){
+
+    @PostMapping
+    String add(Product product) {
         productRepository.add(product);
-        //System.out.println(product);
-        return "redirect:/index/lista";
+        return "redirect:lista";
     }
 
-    @GetMapping("/index/lista")
-    String getProductsList (Model model){
+    @GetMapping("/lista")
+    String getProductsList(Model model) {
         model.addAttribute("lista", productRepository.findAll());
         model.addAttribute("sumaCen", productRepository.sumProductsPrices());
         return "lista";
     }
 
-    @GetMapping("/index/tabela")
-    String getProductsTable (Model model){
+    @GetMapping("/tabela")
+    String getProductsTable(Model model) {
         model.addAttribute("tabela", productRepository.findAll());
         model.addAttribute("sumaCen", productRepository.sumProductsPrices());
         return "tabela";

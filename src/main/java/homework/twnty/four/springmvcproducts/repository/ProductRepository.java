@@ -20,7 +20,8 @@ public class ProductRepository {
     public List<Product> findAll() {
         return new ArrayList<>(listOfProducts);
     }
-    public double sumProductsPrices(){
+
+    public double sumProductsPrices() {
         return listOfProducts.stream()
                 .mapToDouble(Product::getPrice)
                 .sum();
